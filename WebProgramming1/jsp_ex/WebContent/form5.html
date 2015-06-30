@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form 전송 방식 차이점</title>
+</head>
+<body>
+
+<h4>인코딩 방식: application/x-www-form-urlencoded</h4><!-- form 전송 기본값 -->
+<form action="form5.jsp" method="post">
+	이름: <input type="text" name="name"><br>
+	주소: <input type="text" name="address"><br>
+	파일: <input type="file" name="file"><br>
+	<input type="submit" value="전송">
+</form>
+<br><br>
+
+<h4>인코딩 방식: multipart/form-data</h4>
+<form action="form5.jsp" method="post" enctype="multipart/form-data">
+	이름: <input type="text" name="name"><br>
+	주소: <input type="text" name="address"><br>
+	파일: <input type="file" name="file"><br>
+	<input type="submit" value="전송">
+</form>
+
+</body>
+</html>
