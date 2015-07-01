@@ -2,9 +2,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%
 	try {
-		response.setContentType("image/jpeg");
-		response.addHeader("Content-Transfer-Encoding", "binary");
+		//response.setContentType("image/jpeg");
 		String filename = application.getRealPath("/") + "\\images\\애쉬.jpg";
+		
+		response.setContentType(application.getMimeType(filename));
+		response.addHeader("Content-Transfer-Encoding", "binary");
+		
 		FileInputStream fis = new FileInputStream(filename);
 		BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
 		byte[] buf = new byte[1024];
