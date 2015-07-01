@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="get" action="req.jsp">
+		<table border=1 cellspacing="1" cellpadding="5">
+			<tr>
+				<td>닉네임</td>
+				<td><input type="text" size="10" name="nick"></td>
+			</tr>
+			<tr>
+				<td>챔피언</td>
+				<td>
+					<select name="champ">
+						<option selected>그레이브즈</option>
+						<option>베인</option>
+						<option>카탈리나</option>
+						<option>애쉬</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>특성</td>
+				<td>
+					<input type="checkbox" name="prop" value="공격력+30"/>공격력+30
+					<input type="checkbox" name="prop" value="공속+25%"/>공속+25%
+					<input type="checkbox" name="prop" value="흡혈+15%"/>흡혈+15%
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="확인">
+					<input type="reset" value="취소">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
