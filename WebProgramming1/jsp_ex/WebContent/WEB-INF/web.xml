@@ -52,6 +52,20 @@
 		<location>/ch07/error/500_error.jsp</location>
 	</error-page>
 	
+	<session-config>
+		<!-- 세션 타임아웃 (분 단위) -->
+		<session-timeout>1</session-timeout>
+	</session-config>
+	
+	<context-param>
+		<param-name>AdminId</param-name>
+		<param-value>jsp_ex</param-value>
+	</context-param>
+	<context-param>
+		<param-name>AdminPw</param-name>
+		<param-value>1234</param-value>
+	</context-param> 
+	
 </web-app>
 
 
