@@ -36,11 +36,12 @@ while (rs.next()) {
 		<td><%= rs.getString("damage") %></td>
 		<td><%= rs.getDate("regdate") %></td>
 		<td>
-			<a href="">수정</a> / <a href="">삭제</a>
+			<a href="edit.jsp?no=<%= rs.getLong("no") %>">수정</a> / <a href="">삭제</a>
 		</td>
 	</tr>
 <%
 }
+rs.close();
 stmt.close();
 conn.close();
 %>
