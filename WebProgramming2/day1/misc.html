@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Misc</title>
+</head>
+<body>
+	
+	<section>
+		<h2>Task Progress</h2>
+		<p>
+			Progress: <progress id="p" max="100"><span>0</span>%</progress>
+		</p>
+		<script type="text/javascript">
+			var progressBar = document.getElementById("p");
+			function updateProgress(newValue) {
+				progressBar.value = newValue;
+				progressBar.getElementsByTagName("span")[0].textContent = newValue;
+			}
+			updateProgress(30);
+		</script>
+	</section>
+	
+	<meter value="0.5">Moderate activity,</meter>
+	
+	<br/><br/>
+	
+	<input type="text" list="myList">
+	<datalist id="myList">
+		<option label="Mr" value="Mr" />
+		<option label="Ms" value="Ms" />
+		<option label="Prof" value="Mad Professor" />
+	</datalist>
+	
+	<br/><br/>
+	
+	<video width="320" height="240" controls="controls">
+		<source src="small.ogv" type="video/ogg" />
+		<source src="small.mp4" type="video/mp4" />
+		Download <a href="small.ogv">small.ogv</a>
+	</video>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

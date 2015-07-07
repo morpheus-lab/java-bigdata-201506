@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>canvas</title>
+</head>
+<body>
+
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext("2d");
+		
+		/* line #1 */
+		context.beginPath();
+		context.moveTo(50, 50);	// 경로의 시작점 설정
+		context.lineTo(300, 50);	// 경로의 끝점
+		context.lineWidth = 10;	// 선 굵기
+		context.strokeStyle = "#0000FF";	// 선 색상 설정
+		context.lineCap = "round";
+		context.stroke();
+		
+		/* line #2 */
+		context.beginPath();
+		context.moveTo(50, 100);	// 경로의 시작점 설정
+		context.lineTo(300, 100);	// 경로의 끝점
+		context.lineWidth = 20;	// 선 굵기
+		context.strokeStyle = "#FF00FF";	// 선 색상 설정
+		context.lineCap = "square";
+		context.stroke();
+		
+		/* line #3 */
+		context.beginPath();
+		context.moveTo(50, 150);	// 경로의 시작점 설정
+		context.lineTo(300, 150);	// 경로의 끝점
+		context.lineWidth = 30;	// 선 굵기
+		context.strokeStyle = "#00FFFF";	// 선 색상 설정
+		context.lineCap = "butt";
+		context.stroke();
+		
+	</script>
+
+</body>
+</html>

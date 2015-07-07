@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>canvas - 사각형 그리기</title>
+
+<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#myCanvas {
+		border: 1px solid #000000;
+		background-color: #ffff00;
+	}
+</style>
+
+<script type="text/javascript">
+	
+	function drawArc() {
+		
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext("2d");
+		
+		// 원
+		context.arc(100, 100, 90, 0, 2 * Math.PI, false);
+		context.lineWidth = 10;
+		context.strokeStyle = "black";
+		context.stroke();
+		
+		// 반원
+		context.beginPath();
+		context.arc(300, 100, 75, 0, Math.PI, false);
+		context.closePath();
+		context.lineWidth = 5;
+		context.fillStyle = "#ff0000";
+		context.fill();
+		context.strokeStyle = "black";
+		context.stroke();
+		
+		// 원호
+		context.beginPath();
+		context.arc(300, 100, 90, 0.25 * Math.PI, 0.75 * Math.PI, true);
+		context.stroke();
+		
+		// 2차 곡선
+		context.beginPath();
+		context.moveTo(50, 300);
+		context.quadraticCurveTo(100, 100, 150, 300);
+		context.stroke();
+		
+		// 베지어 곡선
+		context.beginPath();
+		context.moveTo(200, 300);
+		context.bezierCurveTo(290, 210, 400, 210, 400, 300);
+		context.stroke();
+		
+	};
+	
+</script>
+</head>
+<body onload="drawArc();">
+
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

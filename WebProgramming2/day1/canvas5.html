@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>그라데이션</title>
+<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#myCanvas {
+		border: 1px solid #000000;
+	}
+</style>
+<script type="text/javascript">
+	// window 객체의 onload 이벤트 리스너를 이 익명 함수로 설정
+	window.onload = function() {
+		var canvas=document.getElementById("myCanvas");
+		var context=canvas.getContext("2d");
+		
+		/***** 그라데이션 사각형 *****/
+		
+		// 선형 그래디언트 객체 생성
+		var lg = context.createLinearGradient(50, 50, 150, 50);
+		
+		// 그래디언트 색상 설정
+		lg.addColorStop(0.15, "red");
+		lg.addColorStop(0.35, "black");
+		lg.addColorStop(0.65, "green");
+		lg.addColorStop(0.87, "yellow");
+		
+		// 컨텍스트 fillStyle을 위의 그래디언트 객체로 설정
+		context.fillStyle = lg;
+		
+		// 사각형 그리기
+		context.fillRect(50, 50, 100, 100);
+		
+		/***** 그라데이션 텍스트 *****/
+		lg = context.createLinearGradient(200, 50, 500, 50);
+		lg.addColorStop(0.2, "red");
+		lg.addColorStop(0.4, "black");
+		lg.addColorStop(0.6, "green");
+		lg.addColorStop(0.8, "yellow");
+		context.fillStyle = lg;
+		context.font = "40px Verdana";
+		context.textBaseline = "top";
+		context.fillText("Text Gradation", 200, 50);
+		
+		/***** 방사형 그라데이션 *****/
+		var rg = context.createRadialGradient(200, 300, 50, 300, 300, 200);
+		rg.addColorStop(0.2, "red");
+		rg.addColorStop(0.4, "black");
+		rg.addColorStop(0.6, "green");
+		rg.addColorStop(0.8, "yellow");
+		context.fillStyle = rg;
+		context.fillRect(50, 200, 400, 200);
+		
+		
+	};
+</script>
+</head>
+<body>
+
+	<canvas id="myCanvas" width="600" height="600"></canvas>
+
+</body>
+</html>

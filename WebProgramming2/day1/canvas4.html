@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Transformations Example</title>
+</head>
+<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#myCanvas {
+		border: 1px solid #000000;
+		background-color: #ffff00;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var canvas=document.getElementById("myCanvas");
+		var context=canvas.getContext("2d");
+	 
+		var rectWidth = 250;
+		var rectHeight = 75;
+	 
+		// translate context to center of canvas
+		context.translate(canvas.width/2,canvas.height/2); 		
+	 
+		// half the y component 
+		context.scale(1,0.5);
+	
+		// rotate 45 degrees counter-clockwise
+		context.rotate(-Math.PI/4); 
+	 
+		context.fillStyle="blue";
+		context.fillRect(-rectWidth/2, -rectHeight/2,
+				rectWidth, rectHeight);
+	
+		// flip context horizontally
+		context.scale(-1,1);
+	 
+		context.font="30pt Calibri";
+		context.textAlign="center";
+		context.fillStyle="#ffffff";
+		context.fillText("Mirror Image",3,10);
+	
+	};
+</script>
+
+<body>
+
+	<canvas id="myCanvas" width="400" height="400"></canvas>
+
+</body>
+</html>
