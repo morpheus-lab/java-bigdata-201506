@@ -19,7 +19,16 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mainController</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/member/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>boardController</servlet-name>
+		<servlet-class>com.bit.mvc.control.BoardController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>boardController</servlet-name>
+		<url-pattern>/board/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
