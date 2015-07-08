@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 선택자</title>
+    <style type="text/css">
+        /*div p {color: red}*/  /* div의 자손인 p */
+        div > p {color: red}    /* div의 자식인 p (직접 div에 속하는 p) */
+    </style>
+</head>
+<body>
+
+    <div>
+        <p>여기는 DIV - P</p>
+        <span>
+            <p>여기는 DIV - SPAN - P</p>
+            <div>
+                <p>여기는 DIV - SPAN - DIV - P</p>
+            </div>
+        </span>
+    </div>
+    <p>여기는 P</p>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>캔버스API를 이용한 애니메이션</title>
+    <script>
+        function drawBg() {
+            var bgLayer = document.getElementById('bgLayer');
+            var context = bgLayer.getContext('2d');
+            context.globalAlpha = 0.5;  // 투명도 50%
+
+            // 선형 그래디언트 생성
+            var linearGradient = context.createLinearGradient(0,0,400,400);
+            linearGradient.addColorStop(0, '#0000ff');  // blue
+            linearGradient.addColorStop(0.25, '#0099ff');
+            linearGradient.addColorStop(0.5, '#00ccff');
+            linearGradient.addColorStop(0.75, '#00ffff');
+
+            context.fillStyle = linearGradient;
+            context.fillRect(0,0,400,400);
+
+            // 주기적으로 졸라맨 그리기
+            setInterval(drawZollaMan, 30);
+        }
+
+        var deltaX = 0;
+        var deltaY = 0;
+
+        function drawZollaMan() {
+            deltaX++;
+            deltaY++;
+            deltaX %= 30;
+            deltaY %= 30;
+
+            var canvas = document.getElementById('aniLayer');
+            var context = canvas.getContext('2d');
+
+            // 이전에 그린 그림을 지우기
+            context.clearRect(0,0,400,400);
+
+            // 이전 context 환경 저장
+            context.save();
+
+            // 머리 그리기
+            var headCenterX = 200;
+            var headCenterY = 50;
+            var headRadius = 20;
+            context.beginPath();
+            context.arc(headCenterX, headCenterY, headRadius, 0, Math.PI * 2, false);
+            context.fillStyle = '#000000';
+            context.lineWidth = 5;
+            context.fill();
+
+            // 몸통 그리기
+            context.beginPath();
+            context.moveTo(headCenterX, headCenterY);   // 몸통 시작 점
+            context.lineTo(headCenterX, headCenterY + 150); // 몸통 끝 점
+            context.lineWidth = 10;
+            context.lineCap = 'round';
+            context.stroke();   // 라인 그림
+
+            // 오른팔 그리기
+            context.beginPath();
+            context.moveTo(headCenterX, headCenterY + 50);  // 오른팔 시작 점
+            context.lineTo(headCenterX + 50 - deltaX, headCenterY + 50 + 30 + deltaY);    // 오른팔 끝 점
+            context.stroke();
+
+            // 왼팔 그리기
+            context.beginPath();
+            context.moveTo(headCenterX, headCenterY + 50);  // 왼팔 시작 점
+            context.lineTo(headCenterX - 50 + deltaX, headCenterY + 50 + 30 + deltaY);    // 왼팔 끝 점
+            context.stroke();
+
+            // 오른다리 그리기
+            context.beginPath();
+            context.moveTo(headCenterX, headCenterY + 150); // 오른다리 시작 점
+            context.lineTo(headCenterX + 50 - deltaX, headCenterY + 150 + 50 + deltaY); // 오른다리 시작 점
+            context.stroke();
+
+            // 왼다리 그리기
+            context.beginPath();
+            context.moveTo(headCenterX, headCenterY + 150); // 왼다리 시작 점
+            context.lineTo(headCenterX - 50 + deltaX, headCenterY + 150 + 50 + deltaY); // 왼다리 시작 점
+            context.stroke();
+
+            // 이전 context 환경 복원
+            context.restore();
+        }
+    </script>
+</head>
+<body onload="drawBg()">
+
+    <canvas id="bgLayer" width="400" height="400" style="z-index: 2; position: absolute; left: 0px; top: 0px;"></canvas>
+
+    <canvas id="aniLayer" width="400" height="400" style="z-index: 1; position: absolute; left: 0px; top: 0px;"></canvas>
+
+</body>
+</html>

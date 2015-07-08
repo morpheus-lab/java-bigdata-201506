@@ -1,0 +1,24 @@
+.ani {
+    -webkit-animation: ANIMATION infinite 1s linear;
+    -moz-animation: ANIMATION infinite 1s linear;
+}
+@-webkit-keyframes ANIMATION {
+    from { -webkit-transform: rotate(0deg) }
+    to   { -webkit-transform: rotate(360deg) }
+}
+@-moz-keyframes ANIMATION {
+    from { -moz-transform: rotate(0deg) }
+    to   { -moz-transform: rotate(360deg) }
+}
+div.ani {
+    background-image: url("Napoleon.png");
+    width: 200px;
+    height: 200px;
+    border: 20px solid #ccc;
+    border-radius: 300px;
+    text-align: center;
+    font-size: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+}

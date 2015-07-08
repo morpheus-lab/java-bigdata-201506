@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>캔바스 drawImage</title>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('cropNapoleon');
+            var context = canvas.getContext('2d');
+
+            var imageObj = new Image(); // JavaScript Image 객체 생성
+            imageObj.onload = function() {
+                context.drawImage(imageObj, 0, 0, canvas.width, canvas.height); // 캔바스에 가득 차도록 그림
+
+                // 오른쪽 하단에 이미지를 캔버스의 1/2 너비, 1/2 높이로 그림
+                context.drawImage(imageObj, canvas.width / 2, canvas.height / 2, canvas.width / 2, canvas.height / 2);
+                //                          그림 시작 점 x  , 그림 시작 점 y   , 그리는 너비     , 그리는 높이
+
+                // 나폴레옹 머리 부분을 캔버스의 왼쪽 상단 모서리에 그림
+                var sourceX = 450;
+                var sourceY = 50;
+                var sourceWidth = 200;
+                var sourceHeight = 150;
+                var destX = 0;
+                var destY = 0;
+                var destWidth = sourceWidth / 2;    // 원본 너비의 절반
+                var destHeight = sourceHeight / 2;  // 원본 높이의 절반
+                context.drawImage(imageObj,
+                        sourceX, sourceY, sourceWidth, sourceHeight,    // 소스로부터 잘라올 부분
+                        destX, destY, destWidth, destHeight);   // 캔버스 위의 대상 부분
+            };
+            imageObj.src = 'Napoleon.png';  // Image 객체의 소스 설정
+        }
+    </script>
+</head>
+<body>
+
+    <canvas id="cropNapoleon" width="600" height="400"></canvas>
+
+</body>
+</html>
