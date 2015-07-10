@@ -57,6 +57,7 @@
             form.appendChild(document.createTextNode("검색"));
 
             var select = document.createElement("select");      // <select>
+            select.setAttribute("id", "c");                     //   id="c"
             var opt1 = document.createElement("option");        //   <option>
             opt1.appendChild(document.createTextNode("ID"));    //     ID
             var opt2 = document.createElement("option");        //   <option>
@@ -105,13 +106,29 @@
 
         function searchMember(evt) {
             var q = document.getElementById("q").value;     // <input>에 입력한 텍스트
+            var c = document.getElementById("c").value;     // <select>에서 선택한 <option>
             var tab = document.getElementById("memTable");  // <table>
             var rows = tab.getElementsByTagName("tr");      // [<tr>...</tr>, <tr>...</tr>, ...]
             for (var i = 1; i < rows.length; i++) {
                 var tr = rows[i];   // <tr>...</tr>
                 var tds = tr.getElementsByTagName("td");    // [<td>...</td>, <td>...</td>, <td>...</td>]
-                var td1 = tds[0];   // ID를 갖고 있는 td
+                //var td1 = tds[0];   // ID를 갖고 있는 td
+                var td1;
+                switch (c) {
+                    case "ID":
+                        td1 = tds[0];
+                        break;
+                    case "이름":
+                        td1 = tds[1];
+                        break;
+                    case "이메일":
+                        td1 = tds[2];
+                        break;
+                }
+
                 if (td1.textContent == q) {
+                    tr.style.color = "red";
+                } else if (c == "이메일" && td1.textContent.indexOf(q) > -1) {
                     tr.style.color = "red";
                 } else {
                     tr.style.color = "";

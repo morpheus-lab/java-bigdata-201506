@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - XMLHttpRequest를 이용하여 서버에 request 전송</title>
+    <script>
+        <!--
+        var xhr;
+
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest(); // for IE7+, Firefox, Chrome, Safari, Opera, ...
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");   // for IE6, IE5
+        }
+
+        if (xhr) {
+            xhr.open("GET", "demo_get.jsp", true);  // open(method, url, async)
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("output").innerHTML = xhr.responseText;
+                }
+            }
+            xhr.send();                 // send(string)
+        }
+        //-->
+    </script>
+</head>
+<body>
+
+    <div id="output"></div>
+
+</body>
+</html>

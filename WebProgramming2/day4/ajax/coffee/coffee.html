@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax-powered Coffee Maker</title>
+	<link rel="stylesheet" type="text/css" href="style/coffee.css">
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/text-utils.js"></script>
+	<script type="text/javascript" src="js/coffee.js"></script>
+</head>
+<body>
+
+	<div id="header">
+		<h1>Ajax-powered Coffee Maker</h1>
+	</div>
+	
+	<div id="wrapper">
+		<div id="coffeemaker1">
+			<h2>Coffee Maker #1</h2>
+			<p><img alt="Coffee Maker #1" src="images/CoffeeMaker1.gif"></p>
+			<div id="coffeemaker1-status">Idle</div>
+		</div>
+		
+		<div id="coffeeorder">
+			<p><img src="images/coffeeMugWithBeans.jpg" alt="Mug Cup"></p>
+			<h2>커피 주문 내용을 입력하세요.</h2>
+			<div id="controls">
+				<form>
+					<p>이름: <input type="text" name="name" id="name"></p>
+					<h3>사이즈</h3>
+					<p>
+						<input type="radio" name="size" value="small" checked="checked">Small
+						&nbsp;&nbsp;
+						<input type="radio" name="size" value="medium">Medium
+						&nbsp;&nbsp;
+						<input type="radio" name="size" value="large">Large
+					</p>
+					<h3>음료 종류</h3>
+					<p>
+						<input type="radio" name="beverage" value="mocha" checked="checked">모카
+						&nbsp;&nbsp;
+						<input type="radio" name="beverage" value="latte">라떼
+						&nbsp;&nbsp;
+						<input type="radio" name="beverage" value="cappucino">카푸치노
+					</p>
+					<p>
+						<input type="button" onclick="orderCoffee()" value="주문">
+					</p>
+				</form>
+			</div>
+		</div>
+		
+		<div id="coffeemaker2">
+			<h2>Coffee Maker #2</h2>
+			<p><img alt="Coffee Maker #2" src="images/CoffeeMaker2.gif"></p>
+			<div id="coffeemaker2-status">Idle</div>
+		</div>
+		
+		<p id="clear"></p>
+	</div>
+
+</body>
+</html>
