@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Top 5 CD Recommendations</title>
+<link rel="stylesheet" type="text/css" href="style/top5.css" />
+<script type="text/javascript" src="js/top5.js"></script>
+</head>
+
+<body onload="addOnClickHandlers();">
+	<div id="instructions">Click on a CD cover to add it to the Top 5
+		list. If you want to start over, click the "Start Over" button to
+		clear the Top 5 list.</div>
+
+	<div id="cds">
+		<img class="cover" src="images/vaughan_flood.jpg" alt="Texas Flood, by Stevie Ray Vaughan" />
+		<img class="cover" src="images/clapton_cream.jpg" alt="The Cream of Clapton, by Eric Clapton" />
+		<img class="cover" src="images/mayer_try.jpg" alt="Try! Live, by John Mayer Trio" />
+		<img class="cover" src="images/waters_live.jpg" alt="Live, by Muddy Waters" />
+		<img class="cover" src="images/house_delta.jpg" alt="Original Delta Blues, by Son House" />
+		<img class="cover" src="images/cream_live.jpg" alt="Royal Albert Hall, by Cream" />
+		<img class="cover" src="images/shepherd_ledbetter.jpg" alt="Ledbetter Heights, by Kenny Wayne Shepherd" />
+		<img class="cover" src="images/johnson_complete.jpg" alt="The Complete Recordings, by Robert Johnson" />
+		<img class="cover" src="images/hendrix_experience.jpg" alt="Are You Experienced, by Jimmi Hendrix" />
+		<img class="cover" src="images/jorma_blues.jpg" alt="Blue Country Heart, by Jorma Kaukonen" />
+		<img class="cover" src="images/johnson_wizard.jpg" alt="The Original Guitar  Wizard, by Lonnie Johnson" />
+		<img class="cover" src="images/lang_lie.jpg" alt="Lie to Me, by Jonny Lang" />
+	</div>
+
+	<div id="top5-listings">
+		<h2>My Top 5 CDs</h2>
+		<div id="top5"></div>
+	</div>
+
+	<form>
+		<input type="button" value="Start Over" onclick="startOver();" />
+	</form>
+</body>
+</html>
