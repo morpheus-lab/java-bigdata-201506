@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>섭씨 화씨 온도변환</title>
+    <script>
+        <!--
+        function convert(degree) {
+            if (degree == 'C') {
+                // 섭씨 온도 -> 화씨 온도
+                f = document.getElementById('c').value * 9 / 5 + 32;
+                document.getElementById('f').value = Math.round(f);
+            }
+            else {
+                // 화씨 온도 -> 섭씨 온도
+                c = (document.getElementById('f').value - 32) * 5 / 9;
+                document.getElementById('c').value = Math.round(c);
+            }
+        }
+        function myKeyUp() {
+            if (console)
+                console.log('KEYUP');
+        }
+        function myKeyDown() {
+            console.log('KEYDOWN');
+        }
+        function myKeyPress() {
+            console.log('KEYPRESS');
+        }
+        //-->
+    </script>
+</head>
+<body>
+
+    섭씨 온도 : <input id="c" name="c" type="text"
+                   onkeyup="convert('C');myKeyUp()" onkeydown="myKeyDown()" onkeypress="myKeyPress()">℃<br/>
+    화씨 온도 : <input id="f" name="f" type="text"
+                   onkeyup="convert('F');myKeyUp()" onkeydown="myKeyDown()" onkeypress="myKeyPress()">℉<br/>
+
+    <div>여기는 div 안</div>여기는 div 밖
+    <br/><br/>
+    <p>여기는 p 안</p>여기는 p 밖
+    <br/><br/>
+    <span>여기는 span 안</span>여기는 span 밖
+
+</body>
+</html>

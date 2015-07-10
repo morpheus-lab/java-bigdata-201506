@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // DOM을 이용해 화면 구성
+
+            var h1 = document.createElement("h1");  // h1 엘리먼트 생성
+            h1.appendChild(document.createTextNode("회원정보"));
+            document.body.appendChild(h1);  // h1 엘리먼트를 body의 하위에 배치
+
+            // 테이블
+            var tab = document.createElement("table");
+            tab.setAttribute("id", "memTable");         // <table id="memTable">
+
+            var tr = makeRow("ID", "이름", "이메일", true);
+            tab.appendChild(tr);
+
+            var memInfos = [
+                {id: "gdhong", name: "홍길동", email: "gdhong@hong.hong"},
+                {id: "shim", name: "심청", email: "shim@gmail.com"},
+                {id: "2inja", name: "홍진호", email: "kong@gmail.com"},
+                {id: "numberone", name: "임요환", email: "numberone@gmail.com"}
+            ];
+            for (var i = 0; i < memInfos.length; i++) {
+                var mem = memInfos[i];
+                tr = makeRow(mem.id, mem.name, mem.email, false);
+                tab.appendChild(tr);
+            }
+            /*
+            tr = makeRow("gdhong", "홍길동", "gdhong@hong.hong");
+            tab.appendChild(tr);
+
+            tr = makeRow("gdhong", "홍길동", "gdhong@hong.hong");
+            tab.appendChild(tr);
+
+            tr = makeRow("gdhong", "홍길동", "gdhong@hong.hong");
+            tab.appendChild(tr);
+            */
+            document.body.appendChild(tab);
+
+            // 폼
+            var form = document.createElement("form");
+
+            form.appendChild(document.createTextNode("검색"));
+
+            var select = document.createElement("select");      // <select>
+            var opt1 = document.createElement("option");        //   <option>
+            opt1.appendChild(document.createTextNode("ID"));    //     ID
+            var opt2 = document.createElement("option");        //   <option>
+            opt2.appendChild(document.createTextNode("이름"));  //     이름
+            var opt3 = document.createElement("option");        //   <option>
+            //opt3.setAttribute("selected", "selected");          //   <option selected="selected">
+            opt3.appendChild(document.createTextNode("이메일"));//     이메일
+            select.appendChild(opt1);
+            select.appendChild(opt2);
+            select.appendChild(opt3);
+            form.appendChild(select);
+
+            var input = document.createElement("input");        // <input>
+            input.setAttribute("type", "text");                 //    type="text"
+            input.setAttribute("id", "q");                      //    id="q"
+            form.appendChild(input);
+
+            var button = document.createElement("button");
+            button.appendChild(document.createTextNode("검색"));
+            button.addEventListener("click", searchMember, false);
+            form.appendChild(button);
+
+            document.body.appendChild(form);
+        };
+
+        function makeRow(id, name, email, isHeader) {
+            var cellTag = isHeader ? "th" : "td";
+
+            var tr = document.createElement("tr");
+
+            var td1 = document.createElement(cellTag);
+            td1.appendChild(document.createTextNode(id));
+
+            var td2 = document.createElement(cellTag);
+            td2.appendChild(document.createTextNode(name));
+
+            var td3 = document.createElement(cellTag);
+            td3.appendChild(document.createTextNode(email));
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+
+            return tr;
+        }
+
+        function searchMember(evt) {
+            var q = document.getElementById("q").value;     // <input>에 입력한 텍스트
+            var tab = document.getElementById("memTable");  // <table>
+            var rows = tab.getElementsByTagName("tr");      // [<tr>...</tr>, <tr>...</tr>, ...]
+            for (var i = 1; i < rows.length; i++) {
+                var tr = rows[i];   // <tr>...</tr>
+                var tds = tr.getElementsByTagName("td");    // [<td>...</td>, <td>...</td>, <td>...</td>]
+                var td1 = tds[0];   // ID를 갖고 있는 td
+                if (td1.textContent == q) {
+                    tr.style.color = "red";
+                } else {
+                    tr.style.color = "";
+                }
+            }
+
+            evt.preventDefault();   // submit 방지
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

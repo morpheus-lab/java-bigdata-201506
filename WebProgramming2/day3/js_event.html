@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>JS - Event 처리</title>
+    <script src="js/events.js"></script>
+    <script>
+        /*
+        addEvent(window, "load", function() {
+            alert("익명 함수에서 처리");
+        });
+        function sayHi() {
+            alert("Hello!");
+        }
+        */
+        addEvent(window, "load", function () {
+            var links = document.getElementsByTagName("a");
+            for (var i=0; i<links.length; i++) {
+                addEvent(links[i], "click", function (evt) {
+                    alert("NOPE! I won't take you there!");
+                    evt.preventDefault();   // 기본 이벤트 처리 방지
+                    console.log(evt);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <a href="http://www.google.co.kr">구글</a><br/>
+    <a href="http://www.naver.com">네이버</a><br/>
+    <a href="http://www.daum.net">다음</a><br/>
+
+</body>
+</html>

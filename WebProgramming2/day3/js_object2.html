@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>JS - Object (2)</title>
+</head>
+<body>
+
+    <script>
+        function Apple(type) {
+            this.type = type;
+            this.color = 'red';
+            //this.getInfo = getAppleInfo;
+            this.getInfo = function() {
+                return this.color + ' ' + this.type + ' apple';
+            };
+        }
+
+        /*function getAppleInfo() {
+            return this.color + ' ' + this.type + ' apple';
+        }*/
+
+        var apple = new Apple('부사');
+        apple.color = 'reddish';
+
+        document.write(apple.getInfo());
+    </script>
+
+</body>
+</html>

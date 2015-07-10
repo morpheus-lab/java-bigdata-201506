@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트의 전파 (Bubble Phase)</title>
+    <script>
+        window.onload = function() {
+
+            // 표준 이벤트 처리
+            var aEls = document.getElementsByTagName("a");
+            for (var i = 0; i < aEls.length; i++) {
+                aEls[i].addEventListener("click", function(evt) {
+                    console.log("a 태그에서 클릭 이벤트 발생");
+                    evt.preventDefault();   // a 태그가 갖고 있는 기본 이벤트 처리("이동")가 일어나지 않도록
+                }, false);
+            }
+            var liEls = document.getElementsByTagName("li");
+            for (var i = 0; i < liEls.length; i++) {
+                liEls[i].addEventListener("click", function(evt) {
+                    console.log("li 태그에서 클릭 이벤트 발생");
+                    evt.stopPropagation();
+                }, false);
+            }
+            var ulEls = document.getElementsByTagName("ul");
+            for (var i = 0; i < ulEls.length; i++) {
+                ulEls[i].addEventListener("click", function(evt) {
+                    console.log("ul 태그에서 클릭 이벤트 발생");
+                }, false);
+            }
+            var divEls = document.getElementsByTagName("div");
+            for (var i = 0; i < divEls.length; i++) {
+                divEls[i].addEventListener("click", function(evt) {
+                    console.log("div 태그에서 클릭 이벤트 발생");
+                }, false);
+            }
+
+            var noNumInput = document.getElementById("noNum");
+            noNumInput.addEventListener("keydown", function(evt) {
+                //console.log(evt);
+                var keyCode = evt.keyCode;
+                if (evt.shiftKey == false && (keyCode >= 48 && keyCode <=57) || (keyCode >= 96 && keyCode <= 105)) {    // 숫자 입력
+                    evt.returnValue = false;
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+
+    <div>
+        <ul>
+            <li>
+                <a href="http://www.google.com">Google</a>
+            </li>
+            <li>
+                <a href="http://www.naver.com">Naver</a>
+            </li>
+        </ul>
+    </div>
+
+    <input id="noNum" type="text"> (숫자는 입력할 수 없음)
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS - Math</title>
+</head>
+<body>
+
+<p id="demo">아래 버튼을 눌러보세요.</p>
+
+<button onclick="myRound()">Math.round(2.5)</button>
+
+<button onclick="myMax()">Math.max(5, 10, 7)</button>
+
+<br/><br/>
+random(): <span id="rand"></span><br/>
+
+<button onclick="myRandom()">Math.random()</button>
+
+<script>
+    function myRound() {
+        document.getElementById('demo').innerHTML = Math.round(2.5);
+    }
+    function myMax() {
+        document.getElementById('demo').innerHTML = Math.max(5, 10, 7);
+    }
+    function myRandom() {
+        document.getElementById('rand').innerHTML = Math.random();
+    }
+</script>
+
+</body>
+</html>
