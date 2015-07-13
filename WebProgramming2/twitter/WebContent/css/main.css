@@ -1,0 +1,21 @@
+/* 파일명: /css/main.css */
+@CHARSET "UTF-8";
+
+body {
+	margin: 10px 0 0 10px;
+}
+
+div#top {
+	width: 800px;
+	height: 100%;
+	margin: auto;
+}
+
+#loginForm {
+	display: inline;
+	float: right;
+}
+
+input.login {
+	border: 1px solid gray;
+}
