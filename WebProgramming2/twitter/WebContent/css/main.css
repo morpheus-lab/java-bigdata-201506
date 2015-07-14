@@ -5,10 +5,21 @@ body {
 	margin: 10px 0 0 10px;
 }
 
-div#top {
+div#top, div#timeline {
 	width: 800px;
-	height: 100%;
 	margin: auto;
+}
+
+div#newTweet {
+	display: none;
+	position: relative;
+	margin: auto;
+	z-index: 10;
+	width: 400px;
+	height: 74px;
+	border: 3px solid orange;
+	background-color: #cccccc;
+	padding: 5px;
 }
 
 #loginForm {
@@ -19,3 +30,46 @@ div#top {
 input.login {
 	border: 1px solid gray;
 }
+
+.bg-yellow {
+	background-color: yellow;
+}
+
+.bg-gray {
+	background-color: gray;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#twits li {
+	list-style: none;
+	border: 1px dashed gray;
+	margin-bottom: 10px;
+	width: 600px;
+}
+
+li div {
+	display: inline-block;
+	vertical-align: top;
+}
+
+li div.twit-content {
+	width: 400px;
+	word-break: break-all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
