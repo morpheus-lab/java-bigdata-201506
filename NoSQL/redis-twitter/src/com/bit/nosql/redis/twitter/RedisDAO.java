@@ -1,9 +1,13 @@
 package com.bit.nosql.redis.twitter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
+import com.bit.nosql.redis.twitter.model.Twit;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -92,7 +96,87 @@ public class RedisDAO implements ServletContextListener {
 			jedis.lpush(userSeq + ":twits", twitSeq.toString());
 		}
 	}
+	
+	// 전체 타임라인의 트윗 조회
+	public static List<Twit> getAllTwits() {
+		List<Twit> twits = new ArrayList<>();
+		try (Jedis jedis = pool.getResource()) {
+			List<String> timeline = jedis.lrange("timeline", 0, -1);	// twit_seq의 리스트
+			for (String twitSeq : timeline) {
+				String twitRawData = jedis.get("twit:" + twitSeq);
+				String[] fields = twitRawData.split("\\|", 3);
+				String userSeq = fields[0];
+				String datetime = fields[1];
+				String message = fields[2];
+				String userName = jedis.hget("user_info", userSeq + ":userName");
+				Twit twit = new Twit(twitSeq, userSeq, userName, datetime, message);
+				twits.add(twit);
+			}
+		}
+		return twits;
+	}
+	
+	// 사용자별 타임라인의 트윗 조회
+	public static List<Twit> getTwits(String userSeq) {
+		List<Twit> twits = new ArrayList<>();
+		try (Jedis jedis = pool.getResource()) {
+			List<String> timeline = jedis.lrange("timeline:" + userSeq, 0, -1);	// twit_seq의 리스트
+			for (String twitSeq : timeline) {
+				String twitRawData = jedis.get("twit:" + twitSeq);
+				String[] fields = twitRawData.split("\\|", 3);
+				String writerUserSeq = fields[0];
+				String datetime = fields[1];
+				String message = fields[2];
+				String userName = jedis.hget("user_info", userSeq + ":userName");
+				Twit twit = new Twit(twitSeq, writerUserSeq, userName, datetime, message);
+				twits.add(twit);
+			}
+		}
+		return twits;
+	}
+	
+	// 특정 사용자 개인 트윗 목록 조회 (이 사용자가 쓴 트윗만 조회)
+	public static List<Twit> getPersonalTwits(String userSeq) {
+		List<Twit> twits = new ArrayList<>();
+		try (Jedis jedis = pool.getResource()) {
+			List<String> timeline = jedis.lrange(userSeq + ":twits", 0, -1);	// twit_seq의 리스트
+			for (String twitSeq : timeline) {
+				String twitRawData = jedis.get("twit:" + twitSeq);
+				String[] fields = twitRawData.split("\\|", 3);
+				String writerUserSeq = fields[0];
+				String datetime = fields[1];
+				String message = fields[2];
+				String userName = jedis.hget("user_info", userSeq + ":userName");
+				Twit twit = new Twit(twitSeq, writerUserSeq, userName, datetime, message);
+				twits.add(twit);
+			}
+		}
+		return twits;
+	}
 
+	public static void follow(String followee, String follower) {
+		try (Jedis jedis = pool.getResource()) {
+			jedis.sadd(followee + ":followers", follower);
+			jedis.sadd(follower + ":following", followee);
+		}
+	}
+	
+	public static boolean isFollowing(String followee, String follower) {
+		boolean isFollowing = false;
+		if (followee != null && follower != null) {
+			try (Jedis jedis = pool.getResource()) {
+				isFollowing = jedis.sismember(follower + ":following", followee);
+			}
+		}
+		return isFollowing;
+	}
+	
+	public static void unfollow(String followee, String follower) {
+		try (Jedis jedis = pool.getResource()) {
+			
+		}
+	}
+	
 }
 
 
