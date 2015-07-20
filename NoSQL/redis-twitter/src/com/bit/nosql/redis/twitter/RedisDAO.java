@@ -3,6 +3,7 @@ package com.bit.nosql.redis.twitter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -90,7 +91,12 @@ public class RedisDAO implements ServletContextListener {
 			jedis.lpush("timeline:" + userSeq, twitSeq.toString());
 			
 			// 팔로워 타임라인에 twit_seq 등록
-			// TODO: 팔로우 기능 추가 후 작성
+			Set<String> followers = jedis.smembers(userSeq + ":followers");
+			if (followers != null) {
+				for (String follower : followers) {
+					jedis.lpush("timeline:" + follower, twitSeq.toString());
+				}
+			}
 			
 			// 사용자 트윗 목록(자기가 쓴 글만 나옴)에 twit_seq 등록
 			jedis.lpush(userSeq + ":twits", twitSeq.toString());
@@ -127,7 +133,7 @@ public class RedisDAO implements ServletContextListener {
 				String writerUserSeq = fields[0];
 				String datetime = fields[1];
 				String message = fields[2];
-				String userName = jedis.hget("user_info", userSeq + ":userName");
+				String userName = jedis.hget("user_info", writerUserSeq + ":userName");
 				Twit twit = new Twit(twitSeq, writerUserSeq, userName, datetime, message);
 				twits.add(twit);
 			}
@@ -146,7 +152,7 @@ public class RedisDAO implements ServletContextListener {
 				String writerUserSeq = fields[0];
 				String datetime = fields[1];
 				String message = fields[2];
-				String userName = jedis.hget("user_info", userSeq + ":userName");
+				String userName = jedis.hget("user_info", writerUserSeq + ":userName");
 				Twit twit = new Twit(twitSeq, writerUserSeq, userName, datetime, message);
 				twits.add(twit);
 			}
@@ -173,7 +179,8 @@ public class RedisDAO implements ServletContextListener {
 	
 	public static void unfollow(String followee, String follower) {
 		try (Jedis jedis = pool.getResource()) {
-			
+			jedis.srem(follower + ":following", followee);
+			jedis.srem(followee + ":followers", follower);
 		}
 	}
 	

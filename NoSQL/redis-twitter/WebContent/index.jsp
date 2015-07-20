@@ -35,6 +35,7 @@
 			<input type="button" value="회원가입" onclick="location.href='signup.jsp'">
 		</form>
 		<% } else {	%>
+		<button onclick="location.href='?userSeq=<%=userSeq%>'">내 타임라인</button>
 		<button onclick="location.href='logout.jsp'">로그아웃</button>
 		<% } %>
 	</div>
@@ -68,9 +69,17 @@
 		else {
 			pageTitle = RedisDAO.getUserNameByUserSeq(paramUserSeq) + "님의 타임라인";
 			twits = RedisDAO.getPersonalTwits(paramUserSeq);
-			if (userSeq != null) {
-				
-				followLink = "<a href>";
+			if (userSeq != null) {	// 로그인 상태에서만 follow 링크 출력
+				// 팔로우 중이면
+				if (RedisDAO.isFollowing(paramUserSeq, userSeq)) {
+					followLink = "팔로우 중 (<a href=\"unfollow.jsp?userSeq="
+							+ paramUserSeq + "\">언팔</a>)";
+				}
+				// 팔로우 중이 아니면
+				else {
+					followLink = "<a href=\"follow.jsp?userSeq="
+							+ paramUserSeq + "\">팔로우</a>";
+				}
 			}
 		}
 	}
@@ -78,7 +87,7 @@
 
 	<div id="page_title">
 		<%= pageTitle %>
-		<%= followLink %>
+		<span id="follow"><%= followLink %></span>
 	</div>
 	
 	<%-- 타임라인 --%>
