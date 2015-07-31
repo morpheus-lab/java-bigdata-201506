@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                /*$("p").hide(1000, function () {   // 익명함수를 callback 함수로 이용
+                    alert("hide 끝");
+                });*/
+                //alert("hide() 다음 줄");
+
+                $("p").hide(1000, showAlert);   // 이름있는 함수를 callback 함수로 이용
+            });
+        });
+
+        function showAlert() {
+            alert("hide 끝");
+        }
+    </script>
+</head>
+<body>
+
+    <button>감추기</button>
+    <p>여기가 사라짐</p>
+
+</body>
+</html>

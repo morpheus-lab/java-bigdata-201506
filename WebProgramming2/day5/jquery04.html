@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>jQuery.slideToggle()</title>
     <script src="js/jquery-1.11.3.js"></script>
     <script>
-
+        $(document).ready(function () {
+            $("p.flip").click(function () {
+                $("div.panel").slideToggle("slow");
+            });
+        });
     </script>
     <style type="text/css">
         div.panel,p.flip
@@ -19,7 +23,7 @@
         }
         div.panel
         {
-            height:100px;
+            height:125px;
             display:none;
         }
     </style>

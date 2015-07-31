@@ -5,21 +5,22 @@
     <title></title>
     <script src="js/jquery-1.11.3.js"></script>
     <script>
-
+        $(document).ready(function () {
+            $("p.flip").click(function () {
+                $("div.panel").slideToggle("slow");
+            });
+        });
     </script>
     <style type="text/css">
-        div.panel,p.flip
-        {
-            margin:0px;
-            padding:5px;
-            text-align:center;
-            background:#e5eecc;
-            border:solid 1px #c3c3c3;
+        div.panel, p.flip {
+            margin: 0px;
+            padding: 5px;
+            text-align: center; /* 텍스트 가운데 정렬 */
+            background: #e5eecc;
+            border: 1px solid #c3c3c3;
         }
-        div.panel
-        {
-            height:120px;
-            display:none;
+        div.panel {
+            display: none;
         }
     </style>
 </head>
@@ -28,10 +29,10 @@
     <div class="panel">
         <p>jQuery 쉽고 편하죠?</p>
         <p>뭐도 모르는 저도 하고 있으니까요.</p>
-        <p>slideToggle을 쓰면 열고 닫고 참 편해요.</p>
+        <p>다시 한번 말씀드리지만, 이 글들은 www.w3schools.com의 강좌들을 제가 번역한 글입니다.</p>
     </div>
 
-    <p class="flip">내용 열기/닫기</p>
+    <p class="flip">내용 열기 / 닫기</p>
 
 </body>
 </html>

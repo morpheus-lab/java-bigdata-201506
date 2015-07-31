@@ -5,9 +5,21 @@
     <title></title>
     <script src="js/jquery-1.11.3.js"></script>
     <script>
-
+        $(document).ready(function () {
+            $("p.flip").click(function () {
+                $("div.panel").slideUp("slow");
+            });
+        });
     </script>
-
+    <style type="text/css">
+        div.panel, p.flip {
+            margin: 0px;
+            padding: 5px;
+            text-align: center; /* 텍스트 가운데 정렬 */
+            background: #e5eecc;
+            border: 1px solid #c3c3c3;
+        }
+    </style>
 </head>
 <body>
 

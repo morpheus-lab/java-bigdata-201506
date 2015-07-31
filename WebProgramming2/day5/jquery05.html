@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>jQuery.fadeTo()</title>
     <script src="js/jquery-1.11.3.js"></script>
     <script>
-
+        $(document).ready(function () {
+            $("button").click(function () {
+                //$("div").fadeOut(1000, function() {alert("효과 끝");});
+                $("div").fadeTo("slow", 0.25, "easeOutExpo");
+            });
+        });
     </script>
 
 </head>
 <body>
 
     <div style="background:yellow;width:300px;height:300px">
-    <button>클릭하면 샤르르</button>
+        <button>클릭하면 샤르르</button>
+    </div>
 
 </body>
 </html>

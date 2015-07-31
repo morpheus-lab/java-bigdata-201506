@@ -2,15 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>animate()</title>
     <script src="js/jquery-1.11.3.js"></script>
     <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                animate();
+                setInterval(animate, 2000);
+            });
+        });
 
+        var count = 0;
+
+        function animate() {
+            $("p").text(++count);
+            $("div").animate({height: 300}, 500);
+            $("div").animate({width: 300}, 500);
+            //$("div").animate({height: 300, width: 300}, "slow");
+            $("div").animate({height: 100}, 500);
+            $("div").animate({width: 100}, 500);
+        }
     </script>
 
 </head>
 <body>
 
+    <p>0</p>
     <button>애니메이션 시작하기</button>
     <br /><br />
     <div style="background:#98bf21;height:100px;width:100px;position:relative"></div>

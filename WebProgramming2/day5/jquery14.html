@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery - AJAX - load()</title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").load("jquery12.html");
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div style="border: 1px solid blue; width: 100%; height: 300px;">이 부분이 바뀝니다.</div>
+    <button>데이터 새로 가져오기</button>
+
+</body>
+</html>

@@ -16,20 +16,20 @@ public class RedisExample {
 				"192.168.1.79", 6379)) {
 			
 			try (Jedis jedis = pool.getResource()) {
-				// ÀÏ¹İ ¹®ÀÚ¿­ µ¥ÀÌÅÍ ÀúÀå
+				// ì¼ë°˜ ë¬¸ìì—´ ë°ì´í„° ì €ì¥
 				jedis.set("jedis", "awesome");
 				
-				// µ¥ÀÌÅÍ Á¶È¸
+				// ë°ì´í„° ì¡°íšŒ
 				String value = jedis.get("jedis");
 				System.out.println("jedis: " + value);
 				
-				// Set Å¸ÀÔÀÇ µ¥ÀÌÅÍ ÀúÀå
+				// Set íƒ€ì…ì˜ ë°ì´í„° ì €ì¥
 				jedis.zadd("z2", 10, "KOREA");
 				jedis.zadd("z2", 20, "USA");
 				jedis.zadd("z2", 30, "CHINA");
 				jedis.zadd("z2", 30, "JAPAN");
 				
-				// Set Å¸ÀÔ µ¥ÀÌÅÍ Á¶È¸
+				// Set íƒ€ì… ë°ì´í„° ì¡°íšŒ
 				Set<String> z2 = jedis.zrange("z2", 0, -1);
 //				Iterator<String> iter = z2.iterator();
 //				while (iter.hasNext()) {

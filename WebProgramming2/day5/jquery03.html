@@ -5,7 +5,17 @@
     <title></title>
     <script src="js/jquery-1.11.3.js"></script>
     <script>
-
+        $(document).ready(function () {
+            /*
+            $("button").click(function () {
+                // 부모인 div[class="ex"]를 hide()
+                $(this).parent().hide();
+            });
+            */
+            $(".ex .hide").click(function () {  // class가 ex인 엘리먼트 하위의 class가 hide인 엘리먼트
+                $(this).parent(".ex").hide("slow");
+            });
+        });
     </script>
     <style type="text/css">
         div.ex

@@ -13,7 +13,7 @@ public class RDBExample {
 		Object value;
 
 		// create the object
-		RDB db = new RDB();	// RDB: Tokyo Tyrant Ε¬¶σΐΜΎπΖ® Ε¬·΅½Ί
+		RDB db = new RDB();	// RDB: Tokyo Tyrant ν΄λΌμ΄μ–ΈνΈ ν΄λμ¤
 
 		// connect to the server
 		db.open(new InetSocketAddress("192.168.1.79", 1978));
